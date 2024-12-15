@@ -1,0 +1,52 @@
+The solution involves understanding CSS specificity.  The `p` element within the `.container` has higher specificity than `.container` alone.  To correct this, several approaches can be used:
+
+**Approach 1: Increase the specificity of the desired rule.**
+We can make the `.container` selector more specific by adding an extra element to its target:
+```css
+.container {
+  background-color: lightblue; 
+}
+
+.container p {
+  color: red; 
+}
+
+.container div p {
+    color: blue; /*This will be applied if the 'p' element is inside a 'div' inside the '.container'*/
+}
+```
+
+**Approach 2: Use the !important flag (Use with caution).**
+This overrides all specificity rules, but it's generally best avoided due to maintainability issues.
+
+```css
+.container {
+  background-color: lightblue; 
+}
+
+.container p {
+  color: red;  
+}
+
+.container p {
+    color: blue !important; /*This overrides the previous rule, but avoid overusing !important*/
+}
+```
+
+**Approach 3: Reorder the rules.**
+In some simpler cases, simply ordering the styles so that the more specific style comes after the general style can resolve the issue.
+```css
+.container p {
+  color: blue; 
+}
+
+.container {
+  background-color: lightblue; 
+}
+
+.container p {
+  color: red; 
+}
+```
+The best solution depends on your overall CSS structure. The solution shows how to increase specificity or use `!important` (sparingly).
+Choose the solution that best fits the design of your CSS.
